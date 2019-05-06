@@ -1,22 +1,35 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.views.generic import View, TemplateView
 
-# Create your views here.
 from netaun_app.forms import CustomUserCreationForm
 
 
-def index(request):
+class HomeView(TemplateView):
+    template_name = 'index.html'
 
-    return render(request, 'index.html')
 
-def signup(request):
-    if request.method == 'POST':
+class SignUpView(View):
+    def get(self, request):
+        f = CustomUserCreationForm()
+        return render(request, 'signup.html', {'form': f})
+
+    def post(self, request):
         f = CustomUserCreationForm(request.POST)
         if f.is_valid():
             f.save()
             messages.success(request, 'Account created successfully')
             return redirect('signup')
-    else:
-        f = CustomUserCreationForm()
 
-    return render(request, 'signup.html', {'form': f})
+
+# def signup(request):
+#     if request.method == 'POST':
+#         f = CustomUserCreationForm(request.POST)
+#         if f.is_valid():
+#             f.save()
+#             messages.success(request, 'Account created successfully')
+#             return redirect('signup')
+#     else:
+#         f = CustomUserCreationForm()
+#
+#     return render(request, 'signup.html', {'form': f})
