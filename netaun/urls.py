@@ -21,7 +21,7 @@ from netaun_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^$', views.index, name='index'),
-    url(r'^signup$', views.signup, name='signup'),
+    path('', views.HomeView.as_view(), name='home'),
+    path('signup/', views.SignUpView.as_view(), name='signup'),
 
 ]
