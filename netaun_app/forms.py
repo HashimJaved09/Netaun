@@ -16,9 +16,9 @@ class CustomUserCreationForm(forms.Form):
         self.fields['username'].icon_name = 'star'
 
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'username', 'class': 'form-control fa fa-star-o'}), min_length=4, max_length=150)
-    email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'email'}))
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'password'}))
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'confirm password'}))
+    email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'email', 'class': 'form-control'}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'password', 'class': 'form-control'}))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'confirm password', 'class': 'form-control'}))
 
     def clean_username(self):
         username = self.cleaned_data['username'].lower()

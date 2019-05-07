@@ -19,7 +19,7 @@ class SignUpView(View):
         if f.is_valid():
             f.save()
             messages.success(request, 'Account created successfully')
-            return redirect('signup')
+            return redirect('home')
 
 
 # def signup(request):
