@@ -33,3 +33,11 @@ class SignUpView(View):
 #         f = CustomUserCreationForm()
 #
 #     return render(request, 'signup.html', {'form': f})
+
+
+class ContactUsView(TemplateView):
+    template_name = 'contact.html'
+
+
+class LoginView(TemplateView):
+    template_name = 'login.html'
