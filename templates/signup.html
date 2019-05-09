@@ -1,99 +1,161 @@
+{% extends 'base.html' %}
 {% load static %}
 {% load fontawesome %}
 {% load crispy_forms_tags %}
 
-<div align="center">
-    <div class="main-logo" id="app">
-        <img src="{% static 'images/icon.jpeg' %}" alt="logo"/>
-    </div>
-    {#        <form method="post" novalidate>#}
-    {#            {% csrf_token %}#}
-    {#            <p style="color: red">{{ error_msg }}</p>#}
-    {#            {% for field in form %}#}
-    {##}
-    {##}
-    {##}
-    {##}
-    {#                <p>#}
-    {#                    {{ field.label_tag |as_crispy_field }}<br>#}
-    {#                    {{ field  |as_crispy_field}}#}
-    {##}
-    {##}
-    {#                    {% for error in field.errors %}#}
-    {#                        <p style="color: red">{{ error |as_crispy_field }}</p>#}
-    {#                    {% endfor %}#}
-    {#                </p>#}
-    {#            {% endfor %}#}
-    {##}
-    {#            {% if messages %}#}
-    {##}
-    {#                {% for message in messages %}#}
-    {#                {{ message |as_crispy_field }}#}
-    {#                {% endfor %}#}
-    {##}
-    {#        {% endif %}#}
-    {##}
-    {#            <p>#}
-    {#                <small style="color: grey">Password must be 8 characters long</small>#}
-    {#            </p>#}
-    {#            <button type="submit">Sign up</button>#}
-    {#        </form>#}
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles/contact.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles/contact_responsive.css' %}">
+{% endblock %}
 
-    <form method="post" novalidate>
-        {% csrf_token %}
-        <div class="form-row">
+{% block home %}
+    <!-- Home -->
 
-            <div class="form-group col-md-10 mb-0">
-                <div class="row">
-                    <div class="col-md-1">
-                        <div style="font-size:20px ">  {% fontawesome_icon 'user' 'font-size:100px' %}</div>
+	<div class="home">
+		<div class="home_background"></div>
+		<div class="background_image background_city" style="background-image:url({% static 'images/city_5.png' %})"></div>
+		<div class="cloud cloud_1"><img src="{% static 'images/cloud.png' %}" alt=""></div>
+        <div class="cloud cloud_2"><img src="{% static 'images/cloud.png' %}" alt=""></div>
+        <div class="cloud cloud_3"><img src="{% static 'images/cloud_full.png' %}" alt=""></div>
+        <div class="cloud cloud_4"><img src="{% static 'images/cloud.png' %}" alt=""></div>
+		<div class="home_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="home_content">
+							<div class="home_title">Sign Up</div>
+							<div class="breadcrumbs">
+								<ul class="d-flex flex-row align-items-center justify-content-start">
+									<li><a href="{% url 'home' %}">Home</a></li>
+									<li>Sign Up</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block page-content %}
+    <div class="container mt-5 mb-5 pt-5 pb-5 bg-light">
+        <div class="justify-content-center center"> <!-- align="center" -->
+{#            <div class="main-logo" id="app">#}
+{#                <img src="{% static 'images/icon.jpeg' %}" alt="logo"/>#}
+{#            </div>#}
+            {#        <form method="post" novalidate>#}
+            {#            {% csrf_token %}#}
+            {#            <p style="color: red">{{ error_msg }}</p>#}
+            {#            {% for field in form %}#}
+            {##}
+            {##}
+            {##}
+            {##}
+            {#                <p>#}
+            {#                    {{ field.label_tag |as_crispy_field }}<br>#}
+            {#                    {{ field  |as_crispy_field}}#}
+            {##}
+            {##}
+            {#                    {% for error in field.errors %}#}
+            {#                        <p style="color: red">{{ error |as_crispy_field }}</p>#}
+            {#                    {% endfor %}#}
+            {#                </p>#}
+            {#            {% endfor %}#}
+            {##}
+            {#            {% if messages %}#}
+            {##}
+            {#                {% for message in messages %}#}
+            {#                {{ message |as_crispy_field }}#}
+            {#                {% endfor %}#}
+            {##}
+            {#        {% endif %}#}
+            {##}
+            {#            <p>#}
+            {#                <small style="color: grey">Password must be 8 characters long</small>#}
+            {#            </p>#}
+            {#            <button type="submit">Sign up</button>#}
+            {#        </form>#}
+            <h1 style="color: #1befc5;">Sign Up</h1>
+            <br>
+            <form method="post" novalidate>
+                {% csrf_token %}
+                <div class="form-row">
+
+                    <div class="form-group col-md-12 mb-0">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <div style="font-size:20px;"> {% fontawesome_icon 'user' 'font-size:100px' %}</div>
+                            </div>
+                            <div class="col-md-11">
+                                {{ form.first_name | as_crispy_field }}
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-11">
-                        {{ form.username| as_crispy_field }}
+
+                    <div class="form-group col-md-12 mb-0">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <div style="font-size:20px;"> {% fontawesome_icon 'user' 'font-size:100px' %}</div>
+                            </div>
+                            <div class="col-md-11">
+                                {{ form.last_name | as_crispy_field }}
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="form-group col-md-12 mb-0">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <div style="font-size:20px;"> {% fontawesome_icon 'user' 'font-size:100px' %}</div>
+                            </div>
+                            <div class="col-md-11">
+                                {{ form.username | as_crispy_field }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12 mb-0">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <div style="font-size:20px;"> {% fontawesome_icon 'envelope' 'font-size:100px' %}</div>
+                            </div>
+                            <div class="col-md-11">
+                                {{ form.email | as_crispy_field }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12 mb-0">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <div style="font-size:20px;"> {% fontawesome_icon 'key' 'font-size:100px' %}</div>
+                            </div>
+                            <div class="col-md-11">
+                                {{ form.password1 | as_crispy_field }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12 mb-0">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <div style="font-size:20px;"> {% fontawesome_icon 'key' %}</div>
+                            </div>
+                            <div class="col-md-11">
+                                {{ form.password2 | as_crispy_field }}
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </form>
 
-            </div>
-
-            <div class="form-group col-md-10 mb-0">
-                <div class="row">
-                    <div class="col-md-1">
-                        <div style="font-size:20px ">     {% fontawesome_icon 'envelope' 'font-size:100px' %}</div>
-                    </div>
-                    <div class="col-md-11">
-                        {{ form.email| as_crispy_field }}
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="form-group col-md-10 mb-0">
-                <div class="row">
-                    <div class="col-md-1">
-                        {#        {{ form.email| as_crispy_field }}#}
-                        <div style="font-size:20px ">   {% fontawesome_icon 'key' 'font-size:100px' %}</div>
-                    </div>
-                    <div class="col-md-11">
-                        {{ form.password1| as_crispy_field }}
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="form-group col-md-10 mb-0">
-                <div class="row">
-                    <div class="col-md-1">
-                        <div style="font-size:20px ">     {% fontawesome_icon 'key' %}</div>
-
-                    </div>
-                    <div class="col-md-11">
-                        {{ form.password2 | as_crispy_field }}
-                    </div>
-                </div>
-
-            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
-    </form>
+    </div>
+{% endblock %}
 
-</div>
+{% block script %}
+    <script src="{% static 'js/custom.js' %}"></script>
+{% endblock %}

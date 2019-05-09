@@ -8,6 +8,8 @@ class CustomUserCreationForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
+        self.fields['first_name'].label = False
+        self.fields['last_name'].label = False
         self.fields['username'].label = False
         self.fields['email'].label = False
         self.fields['password1'].label = False
@@ -15,7 +17,9 @@ class CustomUserCreationForm(forms.Form):
 
         self.fields['username'].icon_name = 'star'
 
-    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'username', 'class': 'form-control fa fa-star-o'}), min_length=4, max_length=150)
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'first name', 'class': 'form-control'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'last name', 'class': 'form-control'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'username', 'class': 'form-control'}), min_length=4, max_length=150)
     email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'email', 'class': 'form-control'}))
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'password', 'class': 'form-control'}))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'confirm password', 'class': 'form-control'}))
@@ -45,8 +49,24 @@ class CustomUserCreationForm(forms.Form):
 
     def save(self, commit=True):
         user = User.objects.create_user(
+            # self.cleaned_data['first_name'],
+            # self.cleaned_data['last_name'],
             self.cleaned_data['username'],
             self.cleaned_data['email'],
             self.cleaned_data['password1']
         )
         return user
+
+
+class LoginForm(forms.Form):
+
+    email = forms.EmailField(
+        widget=forms.TextInput(
+            attrs={'placeholder': 'email', 'class': 'form-control'}
+        )
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={'placeholder': 'password', 'class': 'form-control'}
+        )
+    )
